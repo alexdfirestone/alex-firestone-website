@@ -56,7 +56,9 @@ export default function ExcelWindow({
 
   return (
     <div 
-      ref={preview}
+      ref={(node) => {
+        preview(node);
+      }}
       className={`${windowClass} bg-[#e8e8e8] border-2 border-black shadow-[2px_2px_0_#000000] ${isMinimized ? 'h-8' : ''}`}
       style={{
         ...style,
@@ -65,7 +67,9 @@ export default function ExcelWindow({
       }}
     >
       <div 
-        ref={drag}
+        ref={(node) => {
+          drag(node);
+        }}
         className="bg-[#e8e8e8] p-1 flex justify-between items-center border-b-2 border-black cursor-move"
       >
         <div className="flex items-center space-x-2">

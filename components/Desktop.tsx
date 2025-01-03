@@ -86,7 +86,7 @@ export default function Desktop() {
                     isMaximized={windows.about.isMaximized}
                   >
                     <p className="p-4">
-                      Hello! I'm Alex Firestone, a web developer passionate about creating unique digital experiences.
+                      Hello! I&apos;m Alex Firestone, a web developer passionate about creating unique digital experiences.
                     </p>
                   </Window>
                 )}
