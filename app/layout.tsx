@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Alex Firestone",
   description: "Alex Firestone's Portfolio",
+  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({

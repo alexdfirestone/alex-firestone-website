@@ -23,7 +23,6 @@ export default function ExcelWindow({
 }: ExcelWindowProps) {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
-  const [position, setPosition] = useState({ x: 50, y: 50 })
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -38,30 +37,21 @@ export default function ExcelWindow({
 
   const [{ isDragging }, drag, preview] = useDrag(() => ({
     type: 'window',
-    item: { name: 'excel', ...position },
+    item: { name: 'excel' },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
-    end: (item, monitor) => {
-      const dropResult = monitor.getDropResult()
-      if (item && dropResult) {
-        const { x, y } = monitor.getClientOffset() || { x: 0, y: 0 }
-        setPosition({ x, y })
-      }
-    },
-  }), [position])
+  }), [])
 
-  const windowClass = isMaximized ? 'fixed inset-0 z-50' : 'absolute'
-  const style = isMaximized ? {} : { left: position.x, top: position.y }
+  const windowClass = isMaximized ? 'fixed inset-0 z-50' : 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 md:w-96 max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] md:max-w-none md:max-h-none'
 
   return (
     <div 
       ref={(node) => {
         preview(node);
       }}
-      className={`${windowClass} bg-[#e8e8e8] border-2 border-black shadow-[2px_2px_0_#000000] ${isMinimized ? 'h-8' : ''}`}
+      className={`${windowClass} bg-[#e8e8e8] border-2 border-black shadow-[2px_2px_0_#000000] ${isMinimized ? 'h-8' : ''} md:relative md:top-auto md:left-auto md:transform-none`}
       style={{
-        ...style,
         opacity: isDragging ? 0.5 : 1,
         cursor: isDragging ? 'move' : 'auto',
       }}
@@ -92,18 +82,18 @@ export default function ExcelWindow({
             <Square size={8} className="text-black opacity-0 hover:opacity-100" />
           </button>
         </div>
-        <span className="text-sm font-bold text-center flex-grow">{title}</span>
+        <span className="text-xs md:text-sm font-bold text-center flex-grow">{title}</span>
         <div className="w-9 h-3"></div>
       </div>
       {!isMinimized && (
-        <div className="bg-white p-2 overflow-auto" style={{ height: 'calc(100% - 2rem)' }}>
+        <div className="bg-white p-2 overflow-auto md:max-h-none" style={{ height: 'calc(100% - 2rem)', maxHeight: 'calc(100vh - 8rem)' }}>
           <form onSubmit={handleSubmit}>
-            <table className="w-full border-collapse">
+            <table className="w-full border-collapse text-xs md:text-sm">
               <thead>
                 <tr>
-                  <th className="w-8 bg-gray-200 border border-gray-400"></th>
-                  <th className="w-24 bg-gray-200 border border-gray-400">A</th>
-                  <th className="w-32 bg-gray-200 border border-gray-400">B</th>
+                  <th className="w-6 md:w-8 bg-gray-200 border border-gray-400"></th>
+                  <th className="w-16 md:w-24 bg-gray-200 border border-gray-400">A</th>
+                  <th className="w-20 md:w-32 bg-gray-200 border border-gray-400">B</th>
                   <th className="bg-gray-200 border border-gray-400">C</th>
                 </tr>
               </thead>
@@ -117,7 +107,7 @@ export default function ExcelWindow({
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-1 focus:outline-none"
+                      className="w-full px-1 focus:outline-none text-xs md:text-sm"
                       required
                     />
                   </td>
@@ -131,7 +121,7 @@ export default function ExcelWindow({
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-1 focus:outline-none"
+                      className="w-full px-1 focus:outline-none text-xs md:text-sm"
                       required
                     />
                   </td>
@@ -144,8 +134,8 @@ export default function ExcelWindow({
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      className="w-full px-1 focus:outline-none"
-                      rows={4}
+                      className="w-full px-1 focus:outline-none text-xs md:text-sm"
+                      rows={3}
                       required
                     />
                   </td>
@@ -155,7 +145,7 @@ export default function ExcelWindow({
                   <td className="border border-gray-400" colSpan={3}>
                     <button
                       type="submit"
-                      className="bg-blue-500 text-white px-2 py-1 hover:bg-blue-600"
+                      className="bg-blue-500 text-white px-2 py-1 hover:bg-blue-600 text-xs md:text-sm"
                     >
                       Send to Alex
                     </button>
@@ -165,7 +155,7 @@ export default function ExcelWindow({
             </table>
           </form>
           {submitted && (
-            <div className="mt-4 text-green-600 font-bold">
+            <div className="mt-4 text-green-600 font-bold text-xs md:text-sm">
               Thank you for your message! Alex will get back to you soon.
             </div>
           )}

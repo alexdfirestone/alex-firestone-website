@@ -92,112 +92,116 @@ export default function MenuBar({ bgColor, setBgColor, isSnowing, setIsSnowing }
           )}
         </div>
         <span className="font-bold">Alex Firestone</span>
-        <div className="relative">
-          <span 
-            className={`px-2 py-1 rounded-t ${isFileOpen ? 'bg-[#666666] text-white' : ''} cursor-pointer`}
-            onClick={() => setIsFileOpen(!isFileOpen)}
-          >
-            File
-          </span>
-          {isFileOpen && (
-            <div className="absolute top-full left-0 w-48 bg-[#dddddd] border border-[#999999] shadow-lg rounded-b overflow-hidden">
-              <div className="p-2">
-                <div className="flex flex-col space-y-2">
-                  <a 
-                    href="https://twitter.com/alexfirestone" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center space-x-2 px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
-                  >
-                    <Twitter size={16} />
-                    <span>Twitter</span>
-                  </a>
-                  <a 
-                    href="https://www.linkedin.com/in/alexfirestone" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center space-x-2 px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
-                  >
-                    <Linkedin size={16} />
-                    <span>LinkedIn</span>
-                  </a>
-                  <a 
-                    href="mailto:alex@example.com" 
-                    className="flex items-center space-x-2 px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
-                  >
-                    <Mail size={16} />
-                    <span>Email</span>
-                  </a>
-                  <a 
-                    href="https://www.instagram.com/alexfirestone" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center space-x-2 px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
-                  >
-                    <Instagram size={16} />
-                    <span>Instagram</span>
-                  </a>
+        
+        {/* Desktop menu items - hidden on mobile */}
+        <div className="hidden md:flex items-center space-x-4">
+          <div className="relative">
+            <span 
+              className={`px-2 py-1 rounded-t ${isFileOpen ? 'bg-[#666666] text-white' : ''} cursor-pointer`}
+              onClick={() => setIsFileOpen(!isFileOpen)}
+            >
+              File
+            </span>
+            {isFileOpen && (
+              <div className="absolute top-full left-0 w-48 bg-[#dddddd] border border-[#999999] shadow-lg rounded-b overflow-hidden">
+                <div className="p-2">
+                  <div className="flex flex-col space-y-2">
+                    <a 
+                      href="https://twitter.com/alexfirestone" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center space-x-2 px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
+                    >
+                      <Twitter size={16} />
+                      <span>Twitter</span>
+                    </a>
+                    <a 
+                      href="https://www.linkedin.com/in/alexfirestone" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center space-x-2 px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
+                    >
+                      <Linkedin size={16} />
+                      <span>LinkedIn</span>
+                    </a>
+                    <a 
+                      href="mailto:alex@example.com" 
+                      className="flex items-center space-x-2 px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
+                    >
+                      <Mail size={16} />
+                      <span>Email</span>
+                    </a>
+                    <a 
+                      href="https://www.instagram.com/alexfirestone" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center space-x-2 px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
+                    >
+                      <Instagram size={16} />
+                      <span>Instagram</span>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-        <span>Edit</span>
-        <div className="relative">
-          <span 
-            className={`px-2 py-1 rounded-t ${isViewOpen ? 'bg-[#666666] text-white' : ''} cursor-pointer`}
-            onClick={() => setIsViewOpen(!isViewOpen)}
-          >
-            View
-          </span>
-          {isViewOpen && (
-            <div className="absolute top-full left-0 w-48 bg-[#dddddd] border border-[#999999] shadow-lg rounded-b overflow-hidden">
-              <div className="p-2">
-                <div className="font-bold mb-2 text-sm">Change Background:</div>
-                <div className="flex flex-col space-y-2">
+            )}
+          </div>
+          <span>Edit</span>
+          <div className="relative">
+            <span 
+              className={`px-2 py-1 rounded-t ${isViewOpen ? 'bg-[#666666] text-white' : ''} cursor-pointer`}
+              onClick={() => setIsViewOpen(!isViewOpen)}
+            >
+              View
+            </span>
+            {isViewOpen && (
+              <div className="absolute top-full left-0 w-48 bg-[#dddddd] border border-[#999999] shadow-lg rounded-b overflow-hidden">
+                <div className="p-2">
+                  <div className="font-bold mb-2 text-sm">Change Background:</div>
+                  <div className="flex flex-col space-y-2">
+                    <button 
+                      className="w-full text-left px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
+                      onClick={() => handleColorChange('#66a4ff')}
+                    >
+                      Blue Sky
+                    </button>
+                    <button 
+                      className="w-full text-left px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
+                      onClick={() => handleColorChange('#98fb98')}
+                    >
+                      Light Green
+                    </button>
+                    <button 
+                      className="w-full text-left px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
+                      onClick={() => handleColorChange('#ffa07a')}
+                    >
+                      Light Salmon
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="relative">
+            <span 
+              className={`px-2 py-1 rounded-t ${isSpecialOpen ? 'bg-[#666666] text-white' : ''} cursor-pointer`}
+              onClick={() => setIsSpecialOpen(!isSpecialOpen)}
+            >
+              Special
+            </span>
+            {isSpecialOpen && (
+              <div className="absolute top-full left-0 w-48 bg-[#dddddd] border border-[#999999] shadow-lg rounded-b overflow-hidden">
+                <div className="p-2">
                   <button 
-                    className="w-full text-left px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
-                    onClick={() => handleColorChange('#66a4ff')}
+                    className="w-full text-left px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white flex items-center space-x-2"
+                    onClick={handleLaunch}
                   >
-                    Blue Sky
-                  </button>
-                  <button 
-                    className="w-full text-left px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
-                    onClick={() => handleColorChange('#98fb98')}
-                  >
-                    Light Green
-                  </button>
-                  <button 
-                    className="w-full text-left px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white"
-                    onClick={() => handleColorChange('#ffa07a')}
-                  >
-                    Light Salmon
+                    <Rocket size={16} />
+                    <span>{isLaunched ? 'Unlaunch' : 'Launch'}</span>
                   </button>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-        <div className="relative">
-          <span 
-            className={`px-2 py-1 rounded-t ${isSpecialOpen ? 'bg-[#666666] text-white' : ''} cursor-pointer`}
-            onClick={() => setIsSpecialOpen(!isSpecialOpen)}
-          >
-            Special
-          </span>
-          {isSpecialOpen && (
-            <div className="absolute top-full left-0 w-48 bg-[#dddddd] border border-[#999999] shadow-lg rounded-b overflow-hidden">
-              <div className="p-2">
-                <button 
-                  className="w-full text-left px-4 py-1 text-sm hover:bg-[#3875d7] hover:text-white flex items-center space-x-2"
-                  onClick={handleLaunch}
-                >
-                  <Rocket size={16} />
-                  <span>{isLaunched ? 'Unlaunch' : 'Launch'}</span>
-                </button>
-              </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </>
