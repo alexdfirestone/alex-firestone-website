@@ -87,7 +87,7 @@ export default function Desktop() {
                   >
                     <div className="p-4 space-y-4">
                       <p className="text-sm leading-relaxed">
-                        Hi, I'm Alex Firestone, a full-stack engineer, founder, and forward deployed solutions engineer passionate about building AI-powered products and solving complex customer challenges.
+                        Hi, I&apos;m Alex Firestone, a full-stack engineer, founder, and forward deployed solutions engineer passionate about building AI-powered products and solving complex customer challenges.
                       </p>
                       <p className="text-sm leading-relaxed">
                         I have taken products from 0 to 1, architected scalable web applications, and delivered tools that combine LLMs with thoughtful design to create impactful digital experiences. I thrive at the intersection of engineering and customer success, turning ambitious ideas and real-world needs into solutions that work.
