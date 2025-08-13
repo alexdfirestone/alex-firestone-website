@@ -60,8 +60,8 @@ export default function Desktop() {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="w-[100vw] h-[100vh] bg-[#e2c5a1] rounded-lg overflow-hidden relative">
-        <div className="absolute inset-8 bg-[#e2c5a1] rounded-lg shadow-[inset_0_0_10px_rgba(0,0,0,0.2)]">
-          <div className="absolute inset-4 bg-black rounded">
+        <div className="absolute inset-4 md:inset-8 bg-[#e2c5a1] rounded-lg shadow-[inset_0_0_10px_rgba(0,0,0,0.2)]">
+          <div className="absolute inset-2 md:inset-4 bg-black rounded">
             <div className="h-full flex flex-col">
               <MenuBar 
                 bgColor={bgColor} 
@@ -69,8 +69,8 @@ export default function Desktop() {
                 isSnowing={isSnowing}
                 setIsSnowing={setIsSnowing}
               />
-              <div className="flex-1 p-4 relative overflow-hidden" style={{ backgroundColor: bgColor }}>
-                <div className="grid grid-cols-4 gap-4">
+              <div className="flex-1 p-2 md:p-4 relative overflow-hidden" style={{ backgroundColor: bgColor }}>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
                   <Icon name="About Me" icon={User} onClick={() => toggleWindow('about')} />
                   <Icon name="Projects" icon={Folder} onClick={() => toggleWindow('projects')} />
                   <Icon name="Resume" icon={FileText} onClick={() => toggleWindow('resume')} />
@@ -85,9 +85,14 @@ export default function Desktop() {
                     isMinimized={windows.about.isMinimized}
                     isMaximized={windows.about.isMaximized}
                   >
-                    <p className="p-4">
-                      Hello! I&apos;m Alex Firestone, a web developer passionate about creating unique digital experiences.
-                    </p>
+                    <div className="p-4 space-y-4">
+                      <p className="text-sm leading-relaxed">
+                        Hi, I&apos;m Alex Firestone, a full-stack engineer, founder, and forward deployed solutions engineer passionate about building AI-powered products and solving complex customer challenges.
+                      </p>
+                      <p className="text-sm leading-relaxed">
+                        I have taken products from 0 to 1, architected scalable web applications, and delivered tools that combine LLMs with thoughtful design to create impactful digital experiences. I thrive at the intersection of engineering and customer success, turning ambitious ideas and real-world needs into solutions that work.
+                      </p>
+                    </div>
                   </Window>
                 )}
                 {windows.projects.isOpen && (
@@ -99,11 +104,17 @@ export default function Desktop() {
                     isMinimized={windows.projects.isMinimized}
                     isMaximized={windows.projects.isMaximized}
                   >
-                    <ul className="p-4 list-disc list-inside">
-                      <li>Project 1: Personal Website</li>
-                      <li>Project 2: E-commerce Platform</li>
-                      <li>Project 3: Weather App</li>
-                    </ul>
+                                          <ul className="p-4 list-disc list-inside space-y-2">
+                        <li>
+                          <span className="font-medium">Ugig Research (UGIG.app)</span> - A marketplace connecting students and researchers to facilitate human research studies
+                        </li>
+                        <li>
+                          <span className="font-medium">AdviserGPT (advisergpt.ai)</span> - AI-powered SaaS platform helping investment managers accelerate customer acquisition and growth through automated RFP and DDQ workflows
+                        </li>
+                        <li>
+                          <span className="font-medium">Personal Projects</span> - Check out my code on <a href="https://github.com/alexdfirestone" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">GitHub</a>
+                        </li>
+                      </ul>
                   </Window>
                 )}
                 {windows.resume.isOpen && (
@@ -115,11 +126,117 @@ export default function Desktop() {
                     isMinimized={windows.resume.isMinimized}
                     isMaximized={windows.resume.isMaximized}
                   >
-                    <div className="p-4">
-                      <h2 className="font-bold mb-2">Experience</h2>
-                      <p>Web Developer at XYZ Company (2018-Present)</p>
-                      <h2 className="font-bold mt-4 mb-2">Education</h2>
-                      <p>BS in Computer Science, University of Technology (2014-2018)</p>
+                    <div className="p-4 text-sm space-y-4 max-h-96 overflow-y-auto">
+                      <div className="border-b pb-2">
+                        <h1 className="font-bold text-lg">Alex Firestone</h1>
+                        <p className="text-xs text-gray-600">(510) 499-1833 | alexdfirestone@gmail.com | Palo Alto, CA</p>
+                      </div>
+                      
+                      <div>
+                        <h2 className="font-bold text-base border-b border-gray-300 pb-1 mb-2">EXPERIENCE</h2>
+                        
+                        <div className="mb-3">
+                          <div className="flex justify-between items-start">
+                            <h3 className="font-semibold">Founder & Head of Product Engineering</h3>
+                            <span className="text-xs text-gray-600">Palo Alto, CA</span>
+                          </div>
+                          <p className="text-xs text-gray-600 mb-1">AdviserGPT.ai | September 2024 - Present</p>
+                          <ul className="list-disc list-inside text-xs space-y-1 ml-2">
+                            <li>Ideated, built, and launched an AI-driven SaaS that automates RFP, DDQ, and marketing-commentary workflows for investment managers, trimming average response time by 70%.</li>
+                            <li>Closed eight enterprise design-partner deals worth $120K+ in pilot ARR, and raised $400K in pre-seed capital.</li>
+                            <li>Led a full-stack team across LLM engineering, product design, and UI; shipped v1 on Next.js + Vercel, Supabase, and OpenAI APIs—landing the first paying customer within three months.</li>
+                            <li>Developed and deployed retrieval-augmented generation and AI agent pipelines with proprietary indexing tailored to asset management workflows. Improved answer accuracy significantly quarter-over-quarter and reduced manual review time by 50%.</li>
+                          </ul>
+                        </div>
+
+                        <div className="mb-3">
+                          <div className="flex justify-between items-start">
+                            <h3 className="font-semibold">Senior Forward Deployed Engineer</h3>
+                            <span className="text-xs text-gray-600">New York, NY</span>
+                          </div>
+                          <p className="text-xs text-gray-600 mb-1">Ridgeline Inc. | October 2021 - August 2024</p>
+                          <ul className="list-disc list-inside text-xs space-y-1 ml-2">
+                            <li>Built and led a cross-functional team that delivered an internal deployment platform for Ridgeline apps, Python ETL workflows, and automated tasks—cutting onboarding time and costs by 50% (≈ $500K per client).</li>
+                          </ul>
+                        </div>
+
+                        <div className="mb-3">
+                          <div className="flex justify-between items-start">
+                            <h3 className="font-semibold">Quality Engineer</h3>
+                            <span className="text-xs text-gray-600">Incline Village, NV</span>
+                          </div>
+                          <p className="text-xs text-gray-600 mb-1">Ridgeline Inc. | October 2020 - 2021</p>
+                          <ul className="list-disc list-inside text-xs space-y-1 ml-2">
+                            <li>Engineered robust automated test suites for API, integration, and UI testing at Ridgeline, covering Order Management, Electronic Trading, Portfolio Accounting, CRM, and Data Platform Reporting.</li>
+                          </ul>
+                        </div>
+
+                        <div className="mb-3">
+                          <div className="flex justify-between items-start">
+                            <h3 className="font-semibold">Founder</h3>
+                            <span className="text-xs text-gray-600">Santa Barbara, CA</span>
+                          </div>
+                          <p className="text-xs text-gray-600 mb-1">Ugig Research Inc. | October 2018 - 2020</p>
+                          <ul className="list-disc list-inside text-xs space-y-1 ml-2">
+                            <li>Built a SaaS marketplace that matched research participants with university labs; scaled to 10K active users across 10+ universities before winding down in 2020 when nationwide COVID-19 restrictions paused in-person studies.</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base border-b border-gray-300 pb-1 mb-3">TECHNICAL SKILLS</h2>
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="font-semibold mb-2 text-sm">Programming Languages</h4>
+                            <div className="flex flex-wrap gap-2">
+                              <span className="px-2 py-1 bg-gray-100 rounded text-xs">TypeScript</span>
+                              <span className="px-2 py-1 bg-gray-100 rounded text-xs">Python</span>
+                              <span className="px-2 py-1 bg-gray-100 rounded text-xs">Postgres</span>
+                            </div>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2 text-sm">Web & Frameworks</h4>
+                            <div className="flex flex-wrap gap-2">
+                              <span className="px-2 py-1 bg-gray-100 rounded text-xs">React (JS/TS)</span>
+                              <span className="px-2 py-1 bg-gray-100 rounded text-xs">Next.js</span>
+                              <span className="px-2 py-1 bg-gray-100 rounded text-xs">Flask</span>
+                              <span className="px-2 py-1 bg-gray-100 rounded text-xs">FastAPI</span>
+                              <span className="px-2 py-1 bg-gray-100 rounded text-xs">Streamlit</span>
+                            </div>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2 text-sm">AI / LLM Engineering</h4>
+                            <div className="space-y-2">
+                              <div className="flex flex-wrap gap-2">
+                                <span className="px-2 py-1 bg-gray-100 rounded text-xs">RAG & Agentic Workflows</span>
+                                <span className="px-2 py-1 bg-gray-100 rounded text-xs">LLM Optimization</span>
+                                <span className="px-2 py-1 bg-gray-100 rounded text-xs">LangChain</span>
+                                <span className="px-2 py-1 bg-gray-100 rounded text-xs">DSpy</span>
+                                <span className="px-2 py-1 bg-gray-100 rounded text-xs">Vercel AI SDK</span>
+                              </div>
+                              <div className="flex flex-wrap gap-2">
+                                <span className="px-2 py-1 bg-gray-100 rounded text-xs">pgvector</span>
+                                <span className="px-2 py-1 bg-gray-100 rounded text-xs">OpenAI APIs</span>
+                                <span className="px-2 py-1 bg-gray-100 rounded text-xs">Google Gemini</span>
+                                <span className="px-2 py-1 bg-gray-100 rounded text-xs">Anthropic Claude</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base border-b border-gray-300 pb-1 mb-2">EDUCATION</h2>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h3 className="font-semibold">University of California, Santa Barbara</h3>
+                            <p className="text-xs text-gray-600">Santa Barbara, CA</p>
+                          </div>
+                          <span className="text-xs text-gray-600">Class of 2020</span>
+                        </div>
+                        <p className="text-xs">BS Biochemistry and Molecular Biology</p>
+                        <p className="text-xs">Technology Management Certificate</p>
+                      </div>
                     </div>
                   </Window>
                 )}

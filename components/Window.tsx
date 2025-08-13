@@ -11,10 +11,10 @@ interface WindowProps {
 }
 
 export default function Window({ title, onClose, onMinimize, onMaximize, isMinimized, isMaximized, children }: WindowProps) {
-  const windowClass = isMaximized ? 'fixed inset-0 z-50' : 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96'
+  const windowClass = isMaximized ? 'fixed inset-0 z-50' : 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 md:w-96 max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] md:max-w-none md:max-h-none'
   
   return (
-    <div className={`${windowClass} bg-[#e8e8e8] border-2 border-black shadow-[2px_2px_0_#000000] ${isMinimized ? 'h-8' : ''}`}>
+    <div className={`${windowClass} bg-[#e8e8e8] border-2 border-black shadow-[2px_2px_0_#000000] ${isMinimized ? 'h-8' : ''} md:relative md:top-auto md:left-auto md:transform-none`}>
       <div className="bg-[#e8e8e8] p-1 flex justify-between items-center border-b-2 border-black">
         <div className="flex items-center space-x-2">
           <button 
@@ -36,10 +36,10 @@ export default function Window({ title, onClose, onMinimize, onMaximize, isMinim
             <Square size={8} className="text-black opacity-0 hover:opacity-100" />
           </button>
         </div>
-        <span className="text-sm font-bold text-center flex-grow">{title}</span>
+        <span className="text-xs md:text-sm font-bold text-center flex-grow">{title}</span>
         <div className="w-9 h-3"></div>
       </div>
-      {!isMinimized && <div className="p-4 bg-white">{children}</div>}
+      {!isMinimized && <div className="p-2 md:p-4 bg-white overflow-auto max-h-[calc(100vh-8rem)] md:max-h-none">{children}</div>}
     </div>
   )
 }

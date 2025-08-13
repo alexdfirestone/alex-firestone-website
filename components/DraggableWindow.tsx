@@ -49,7 +49,7 @@ export default function DraggableWindow({
       ref={(node) => {
         preview(node);
       }}
-      className={`${windowClass} bg-[#e8e8e8] border-2 border-black shadow-[2px_2px_0_#000000] ${isMinimized ? 'h-8' : ''}`}
+      className={`${windowClass} bg-[#e8e8e8] border-2 border-black shadow-[2px_2px_0_#000000] ${isMinimized ? 'h-8' : ''} w-80 md:w-96 max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] md:max-w-none md:max-h-none md:relative md:top-auto md:left-auto md:transform-none`}
       style={{
         ...style,
         opacity: isDragging ? 0.5 : 1,
@@ -82,10 +82,10 @@ export default function DraggableWindow({
             <Square size={8} className="text-black opacity-0 hover:opacity-100" />
           </button>
         </div>
-        <span className="text-sm font-bold text-center flex-grow">{title}</span>
+        <span className="text-xs md:text-sm font-bold text-center flex-grow">{title}</span>
         <div className="w-9 h-3"></div>
       </div>
-      {!isMinimized && <div className="p-4 bg-white">{children}</div>}
+      {!isMinimized && <div className="p-2 md:p-4 bg-white overflow-auto max-h-[calc(100vh-8rem)] md:max-h-none">{children}</div>}
     </div>
   )
 }
